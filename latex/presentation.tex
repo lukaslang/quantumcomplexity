@@ -33,32 +33,88 @@
           \end{block}
 \end{frame}
 
+\section{Models of Computation}
 \begin{frame}{Models of Computation (or why it doesn't matter)}
           % Register machines, partial recursive functions, Turing machine or just source code.
           % Church-Turing thesis.
-          
-	\begin{block}{A blue block}
-		some text.
-          \end{block}
+          \begin{itemize}
+			\item Which Models of Computation to use?
+			\item formal models:
+			\begin{itemize}
+				\item Lambda calculus
+				\item Register machines
+				\item Turing machines
+				\item ... many more
+			\end{itemize}
+			\item "real" computers: many different architectures...
+		  \end{itemize}
+\end{frame}		
+
+\begin{frame}{Models of Computation (or why it doesn't matter)}  
+	\begin{block}{ Church-Turing thesis }
+		All computable functions are computable by a Turing machine.
+    \end{block}
+    \begin{block}{ Strong Church-Turing thesis }
+		All models of computation can be simulated by a Turing machine with at most polynomial more time/space.
+    \end{block}
 \end{frame}
 
+\section{Problems}
 \begin{frame}{Problems}
           % What is a problem (infinite number of instances and a question).
           % Some easy examples (maybe basic logic or graph problems).
-          
-	\begin{block}{A blue block}
-		some text.
-          \end{block}
+         For a problem, we are interested in
+         \begin{itemize}
+			\item the best (in terms of space/time) algorithm solving the problem
+			\item a proof that it there is no better algorithm
+		\end{itemize}	  
+	
 \end{frame}
 
+\begin{frame}{Problems}
+        What is a \textbf{problem}?
+         \begin{itemize}
+			\item a question
+			\item an input ("instance")
+		\end{itemize}	 
+		
+		If the question is a yes/no question: \textbf{decision problem}. 		
+	
+\end{frame}
+
+\begin{frame}{Problems - Example}
+    \begin{block}{ Halting }
+		Input: A \textbf{computer program} and an \textbf{input string}.\\
+		Question: Does the computer program terminate on that input string?
+    \end{block}	
+	
+	\begin{block}{ Reachability }
+		Input: A graph $G$ and two nodes $s,t$\\
+		Question: Is $t$ reachable from $s$?
+    \end{block}	
+    
+    \begin{block}{ Prime }
+		Input: An integer $P$\\
+		Question: Is $P$ a prime number?
+    \end{block}	
+    
+\end{frame}
+
+\section{Complexity Classes}
 \begin{frame}{Complexity}
           % How to capture complexity. Bit complexity.
           % Time/Space complexity. Polynomial/Exponential.
           % Maybe state a short example algorithm and complexity.
-          
-	\begin{block}{A blue block}
-		some text.
-          \end{block}
+      What is the complexity of \textbf{Prime} ?
+	 \begin{itemize}
+			\item time complexity: computations steps needed to answer the question
+			\item space complexity: how much memory do we need?
+	 \end{itemize}
+	 
+	 \textbf{Prime} can be solved in polynomial time of the input (AKS primality test).
+	 
+	 
+	 
 \end{frame}
 
 \begin{frame}{Complexity Classes}
@@ -66,12 +122,42 @@
 	% P=NP question (can we efficiently solve all problems where we can check the solution efficiently?)
 	% 1 million dollar question (and a few more)
 	% Simpsons and futurama picture.
-          
-	\begin{block}{A blue block}
-		some text.
-          \end{block}
+    Classify problems according to their time and space complexity.
+	\begin{block}{PTIME (or simply P)}
+		problems that can be solved by a deterministic turing machine in polinomial time of the input
+    \end{block}
+    Examples: \textbf{Prime, Reachability}
+    \begin{block}{NP}
+		problems that can be solved by a \textbf{non-deterministic} turing machine in polinomial time of the input
+    \end{block}
+    Examples: \textbf{Integer Factorization, SAT}
+    \begin{block}{PSPACE}
+		problems that can be solved by a deterministic turing machine in polinomial \textbf{space} of the input
+    \end{block}
+    
 \end{frame}
 
+\begin{frame}{Complexity Classes}
+ 
+ \begin{block}{Big question in computer science}
+ 	$P=NP$?
+ \end{block}
+ We know that $ P \subseteq NP$ but not the converse. 
+\end{frame}
+
+\section{Quantum Complexity}
+
+\begin{frame}{Quantum Complexity}
+
+Where do quantum computers fit in?
+
+new computational model to analyse quantum complexity:
+\begin{itemize}
+\item Quantum Turing machine
+\item Quantum circuits
+\end{itemize}
+
+\end{frame}
 % Non-deterministic and randomized computation.
 % Common misconceptions:
 % - Factoring: consider bit complexity and not value complexity (otherwise O(n^2) algorithm would be easy).
