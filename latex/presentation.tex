@@ -158,6 +158,28 @@ new computational model to analyse quantum complexity:
 \end{itemize}
 
 \end{frame}
+
+\begin{frame}{Quantum Turing Machine}
+
+A Quantum Turing Machine is represented by $|x;n;m>$
+\begin{itemize}
+\item slots on the tape are an infinite number of qbits: $m_i$ where $i \in Z$ 
+\item states are represented by a finite number of qbits: $n_i$ where $i \in Z$
+\item $x$ representing the position on a tape
+\item one computation step is a transition $|\psi(n)> = U|\psi(n-1)$ where
+U is a reversible, unitary operator
+\item further conditions on U reflect the usual restrictions on turing machines: 
+\begin{itemize}
+\item on bit at a time is manipulated
+\item the tape position cannot change by more than one unit
+\item a QTM halts if two consecutive states are identical
+\end{itemize}
+\end{itemize}
+
+details : Deutsch, David (July 1985). "Quantum theory, the Church-Turing principle and the universal quantum computer"
+http://www.ceid.upatras.gr/tech_news/papers/quantum_theory.pdf
+
+\end{frame}
 % Non-deterministic and randomized computation.
 % Common misconceptions:
 % - Factoring: consider bit complexity and not value complexity (otherwise O(n^2) algorithm would be easy).
