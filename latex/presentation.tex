@@ -3,6 +3,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphics}
+\usepackage{nicefrac}
 \usepackage{amsthm}
 
 \usetheme{Warsaw}
@@ -39,7 +40,7 @@
           % Church-Turing thesis.
           \begin{itemize}
 			\item Which Models of Computation to use?
-			\item formal models:
+			\item formal (deterministic) models:
 			\begin{itemize}
 				\item Lambda calculus
 				\item Register machines
@@ -54,9 +55,10 @@
 Turing Machine
 
  \begin{itemize}
-			\item one tape with inifnite amount of memory cells
-			\item a head reading/writing on the tape one cell at a time
-			\item a finite control
+			\item one tape with infinite amount of memory cells.
+			\item a head reading/writing on the tape one cell at a time.
+			\item an action table.
+			\item a state register.
  \end{itemize}
  
 \begin{center}
@@ -73,11 +75,11 @@ Turing Machine
     \end{block}
 \end{frame}
 
-\section{Problems}
+\section{Computational Problems}
 \begin{frame}{Problems}
           % What is a problem (infinite number of instances and a question).
           % Some easy examples (maybe basic logic or graph problems).
-         For a problem, we are interested in
+         For a computational problem, we are interested in
          \begin{itemize}
 			\item the best (in terms of space/time) algorithm solving the problem.
 			\item a proof that it there is no better algorithm.
@@ -88,8 +90,8 @@ Turing Machine
 \begin{frame}{Problems}
         What is a \textbf{problem}?
          \begin{itemize}
+			\item an infinite number of inputs ("instance").
 			\item a question.
-			\item an input ("instance").
 		\end{itemize}	 
 		
 		If the question is a yes/no question: \textbf{decision problem}. 		
@@ -159,7 +161,10 @@ Turing Machine
  \begin{block}{Big question in computer science}
  	$P\stackrel{?}{=}NP$, i.e. can we efficiently solve all problems where we can check the solution efficiently?
  \end{block}
- The Clay Mathematics Institute offers a 1 million dollar prize for the solution.
+ e.g. checking whether $3*5 = 15$ is easy but the other way is hard.
+
+ \medskip
+ The Clay Mathematics Institute offers a 1 million dollar prize for a solution!
  
  We know that $ P \subseteq NP$ but not the converse. 
 \end{frame}
@@ -225,12 +230,12 @@ details : Deutsch, David (July 1985). "Quantum theory, the Church-Turing princip
 \begin{frame}{Common misconceptions}
 \begin{itemize}
 \item Quantum computers solve NP-hard problems? \\
- we don't know yet
+$\Rightarrow$ we don't know yet.
 \item Quantum computers break cryptography? \\
 \begin{itemize}
-\item Shor's algorithm can factorize integers in polynomial time
-\item but there might also be a classical algorithm
-\item also: many qbits needed
+\item Shor's algorithm can factorize integers in polynomial time.
+\item but there might also be a classical algorithm.
+\item also: many Qubits needed.
 \end{itemize}
 \end{itemize}
 \end{frame}
@@ -240,8 +245,18 @@ details : Deutsch, David (July 1985). "Quantum theory, the Church-Turing princip
 		BQP (bounded error quantum polynomial time) is the class of decision problems solvable by a quantum computer in polynomial time, with an error probability of at most 1/3 for all instances.
 	\end{block}
 	http://en.wikipedia.org/wiki/BQP
-	% pic here
 \end{frame}
+
+\begin{frame}{The class BQP}
+	\begin{block}{Elementary quantum operations (or quantum gates)}
+		A quantum operation is \emph{elementary}, or sometimes a \emph{quantum gate}, if it acts on three or less qubits of the register.\footnote{The constant 3 is arbitrary!}
+	\end{block}
+	
+	\begin{block}{Quantum computation and BQP}
+		A function $f:\{0,1\}^{*} \rightarrow \{0,1\}$ is \emph{computable in quantum $T(n)$-time} if there is a polynomial-time classical TM that takes some input and outputs the description of quantum gates such that for every $x \in \{0,1\}^{n}$ we can compute $f(x)$ by applying the quantum operations with probability $\ge \nicefrac{2}{3}$. A function $f$ is in BQP if there is some polynomial $p$ s.t. $f$ is computable in quantum $p(n)$-time.
+	\end{block}
+\end{frame}
+
 
 \begin{frame}{The class BQP}
 
