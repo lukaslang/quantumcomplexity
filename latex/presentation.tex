@@ -3,7 +3,6 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphics}
-\usepackage{nicefrac}
 \usepackage{amsthm}
 
 \usetheme{Warsaw}
@@ -23,16 +22,6 @@
 	\tableofcontents
 \end{frame}
 
-\section{Motivation}
-
-\begin{frame}{Motivation}
-	% Why complexity analysis is needed.
-	% Table with growth of functions. Input/Runtime.
-          
-	\begin{block}{A blue block}
-		some text.
-          \end{block}
-\end{frame}
 
 \section{Models of Computation}
 \begin{frame}{Models of Computation (or why it doesn't matter)}
@@ -217,8 +206,11 @@ details : Deutsch, David (July 1985). "Quantum theory, the Church-Turing princip
 \begin{itemize}
 \item one unitary transformation U represented in a quantum gate
 \item universality: CNOT and singe qbit gates
-\item one computation step: ??
 \end{itemize}
+\begin{center}
+\includegraphics[scale=0.3]{images/circuit.png} 
+\end{center}
+
 \end{frame}
 
 % Non-deterministic and randomized computation.
@@ -253,7 +245,7 @@ $\Rightarrow$ we don't know yet.
 	\end{block}
 	
 	\begin{block}{Quantum computation and BQP}
-		A function $f:\{0,1\}^{*} \rightarrow \{0,1\}$ is \emph{computable in quantum $T(n)$-time} if there is a polynomial-time classical TM that takes some input and outputs the description of quantum gates such that for every $x \in \{0,1\}^{n}$ we can compute $f(x)$ by applying the quantum operations with probability $\ge \nicefrac{2}{3}$. A function $f$ is in BQP if there is some polynomial $p$ s.t. $f$ is computable in quantum $p(n)$-time.
+		A function $f:\{0,1\}^{*} \rightarrow \{0,1\}$ is \emph{computable in quantum $T(n)$-time} if there is a polynomial-time classical TM that takes some input and outputs the description of quantum gates such that for every $x \in \{0,1\}^{n}$ we can compute $f(x)$ by applying the quantum operations with probability $\ge \frac{2}{3}$. A function $f$ is in BQP if there is some polynomial $p$ s.t. $f$ is computable in quantum $p(n)$-time.
 	\end{block}
 \end{frame}
 
