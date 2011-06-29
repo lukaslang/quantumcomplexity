@@ -23,6 +23,28 @@
 \end{frame}
 
 
+\section{Motivation}
+
+\begin{frame}{Motivation}
+	% Why complexity analysis is needed.
+	% Table with growth of functions. Input/Runtime.
+	\begin{block}{How to measure time/memory consumed by an algorithm?}
+		\begin{itemize}
+			\item must be independently of CPU/RAM speed.
+			\item consider bit-complexity only ($\log_{2} n$ bits).
+		\end{itemize}
+          \end{block}
+	\begin{block}{Why doesn't Moore's Law help?}
+		\begin{itemize}
+			\item consider $\frac{T(n)}{v_{c}} = \frac{T(N)}{2v_{c}}$, where $T$ is the algorithm's runtime and $v_{c}$ is the CPU speed. 
+			\item let $T(n) := n^{k}$, then $N = \sqrt[k]{2}n$.
+			\item let $T(n) := k^{n}$, then $N = n + \log_{k} 2$.
+			\item Conclusion: double CPU speed gives us only additive constant increase in new solvable instance size for exponential runtimes!
+		\end{itemize}
+          \end{block}
+\end{frame}
+
+
 \section{Models of Computation}
 \begin{frame}{Models of Computation (or why it doesn't matter)}
           % Register machines, partial recursive functions, Turing machine or just source code.
@@ -40,13 +62,13 @@
 		  \end{itemize}
 \end{frame}		
 
-\begin{frame}{Models of Computation (or why it doesn't matter)}  
+\begin{frame}{Models of Computation (or why it doesn't matter)}
 Turing Machine
 
  \begin{itemize}
 			\item one tape with infinite amount of memory cells.
 			\item a head reading/writing on the tape one cell at a time.
-			\item an action table.
+			\item an action/transition table.
 			\item a state register.
  \end{itemize}
  
@@ -79,7 +101,7 @@ Turing Machine
 \begin{frame}{Problems}
         What is a \textbf{problem}?
          \begin{itemize}
-			\item an infinite number of inputs ("instance").
+			\item an infinite possible number of inputs ("instance").
 			\item a question.
 		\end{itemize}	 
 		
@@ -150,12 +172,12 @@ Turing Machine
  \begin{block}{Big question in computer science}
  	$P\stackrel{?}{=}NP$, i.e. can we efficiently solve all problems where we can check the solution efficiently?
  \end{block}
- e.g. checking whether $3*5 = 15$ is easy but the other way is hard.
-
- \medskip
- The Clay Mathematics Institute offers a 1 million dollar prize for a solution!
- 
- We know that $ P \subseteq NP$ but not the converse. 
+ \begin{itemize}
+ 	\item e.g. checking whether $3*5 = 15$ is easy but the other way is hard.
+	\item for NP-hard problems only $\mathcal{O}(k^{n})$ algorithms are known.
+	\item the Clay Mathematics Institute offers a 1 million dollar prize for a correct proof!
+	\item we know that P $\subseteq$ NP, but not the converse. 
+\end{itemize}
 \end{frame}
 
 \section{Quantum Complexity}
@@ -176,8 +198,8 @@ new computational model to analyse quantum complexity:
 
 A Quantum Turing Machine is represented by $|x;n;m>$
 \begin{itemize}
-\item slots on the tape are an infinite number of qbits: $m_i$ where $i \in Z$ 
-\item states are represented by a finite number of qbits: $n_i$ where $i \in Z$
+\item slots on the tape are an infinite number of qubits: $m_i$ where $i \in Z$ 
+\item states are represented by a finite number of qubits: $n_i$ where $i \in Z$
 \item $x$ representing the position on a tape
 \item one computation step is a transition $|\psi(n)> = U|\psi(n-1)>$ where
 U is a reversible, unitary operator
@@ -190,7 +212,7 @@ U is a reversible, unitary operator
 
 further conditions on U reflect the usual restrictions on turing machines: 
 \begin{itemize}
-\item one qbit at a time is manipulated
+\item one qubit at a time is manipulated
 \item the tape position cannot change by more than one unit
 \item a QTM halts if two consecutive states are identical 
 \end{itemize}
@@ -205,7 +227,7 @@ details : Deutsch, David (July 1985). "Quantum theory, the Church-Turing princip
 \begin{frame}{Quantum Gates}
 \begin{itemize}
 \item one unitary transformation U represented in a quantum gate
-\item universality: CNOT and singe qbit gates
+\item universality: CNOT and singe qubit gates
 \end{itemize}
 \begin{center}
 \includegraphics[scale=0.3]{images/circuit.png} 
@@ -222,12 +244,13 @@ details : Deutsch, David (July 1985). "Quantum theory, the Church-Turing princip
 \begin{frame}{Common misconceptions}
 \begin{itemize}
 \item Quantum computers solve NP-hard problems? \\
-$\Rightarrow$ we don't know yet.
+$\Rightarrow$ we don't know yet (but are conjectured not to).
 \item Quantum computers break cryptography? \\
 \begin{itemize}
 \item Shor's algorithm can factorize integers in polynomial time.
 \item but there might also be a classical algorithm.
-\item also: many Qubits needed.
+\item also: many qubits needed.
+\item it might break classical encryption algorithms depending on the (not known) hardness of factoring, but Amazon/Ebay/YourBank would send you a USB stick with prime numbers for one-time-pad usage.
 \end{itemize}
 \end{itemize}
 \end{frame}
@@ -241,11 +264,11 @@ $\Rightarrow$ we don't know yet.
 
 \begin{frame}{The class BQP}
 	\begin{block}{Elementary quantum operations (or quantum gates)}
-		A quantum operation is \emph{elementary}, or sometimes a \emph{quantum gate}, if it acts on three or less qubits of the register.\footnote{The constant 3 is arbitrary!}
+		A quantum operation is \emph{elementary}, or sometimes a \emph{quantum gate}, if it acts on three or less qubits of the register.\footnote{The constant 3 is arbitrary (model not more powerful if we choose e.g. 5.)}
 	\end{block}
 	
 	\begin{block}{Quantum computation and BQP}
-		A function $f:\{0,1\}^{*} \rightarrow \{0,1\}$ is \emph{computable in quantum $T(n)$-time} if there is a polynomial-time classical TM that takes some input and outputs the description of quantum gates such that for every $x \in \{0,1\}^{n}$ we can compute $f(x)$ by applying the quantum operations with probability $\ge \frac{2}{3}$. A function $f$ is in BQP if there is some polynomial $p$ s.t. $f$ is computable in quantum $p(n)$-time.
+		A function $f:\{0,1\}^{*} \rightarrow \{0,1\}$ is \emph{computable in quantum $T(n)$-time} if there is a polynomial-time classical TM that takes some input and outputs the description of quantum gates such that for every $x \in \{0,1\}^{n}$ we can compute $f(x)$ with probability $\ge \frac{2}{3}$ by applying the quantum operations. A function $f$ is in BQP if there is some polynomial $p$ s.t. $f$ is computable in quantum $p(n)$-time.
 	\end{block}
 \end{frame}
 
@@ -265,9 +288,18 @@ $\Rightarrow$ we don't know yet.
 \end{frame}
 
 \begin{frame}{Conclusion}
-
-	
-	
+	\begin{itemize}
+		\item Computational complexity is a necessary tool for analyzing complexity of problems.
+		\item Most interesting problems are not efficiently computable (NP-hard problems), but some can be approximated nicely.
+		\item It is not yet known where Quantum computation exactly fits in.
+	\end{itemize}
 \end{frame}
 
+\begin{thebibliography}{n}
+	\bibitem [AB09]{AB09} S. Arora, B. Barak. \emph{Computational Complexity. A Modern 
+Approach}, 2009.
+	\bibitem [WP-BQP]{wp-bqp} BQP. Wikipedia, \url{http://en.wikipedia.org/wiki/BQP}.
+	\bibitem [D85]{D85} D. Deutsch. \emph{Quantum theory, the Church-Turing principle and the universal quantum computer}, 1985.
+	\bibitem [P94]{P94} C. Papadimitriou. \emph{Computational Complexity}, 1994.
+\end{thebibliography}
 \end{document}
